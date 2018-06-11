@@ -11791,7 +11791,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 检查你的Python版本</span>
@@ -11807,11 +11807,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">Series</span><span class="p">,</span> <span class="n">DataFrame</span>
 
 <span class="c1"># 数据可视化代码</span>
 <span class="kn">from</span> <span class="nn">titanic_visualizations</span> <span class="kn">import</span> <span class="n">survival_stats</span>
@@ -11931,7 +11932,27 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">limit_scope</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">data_min</span><span class="p">,</span> <span class="n">data_max</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;返回数据的取值区间&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="o">&lt;</span> <span class="n">data_min</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data_min</span>
+    <span class="k">elif</span> <span class="n">data</span> <span class="o">&gt;</span> <span class="n">data_max</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data_max</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">salary_tax</span><span class="p">(</span><span class="n">salary</span><span class="p">):</span>
@@ -11949,20 +11970,11 @@ div#notebook {
     <span class="n">losejob_rate</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># 失业保险费率</span>
 
     <span class="c1"># 计算应扣的养老保险费用</span>
-    <span class="k">if</span> <span class="n">salary</span> <span class="o">&lt;</span> <span class="n">endowment_insurance_min</span><span class="p">:</span>
-        <span class="n">endowment_insurance</span> <span class="o">=</span> <span class="n">endowment_insurance_min</span> <span class="o">*</span> <span class="n">endowment_insurance_rate</span>
-    <span class="k">elif</span> <span class="n">salary</span> <span class="o">&gt;</span> <span class="n">endowment_insurance_max</span><span class="p">:</span>
-        <span class="n">endowment_insurance</span> <span class="o">=</span> <span class="n">endowment_insurance_max</span> <span class="o">*</span> <span class="n">endowment_insurance_rate</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">endowment_insurance</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">*</span> <span class="n">endowment_insurance_rate</span>
+    <span class="n">endowment_insurance</span> <span class="o">=</span> <span class="n">limit_scope</span><span class="p">(</span><span class="n">salary</span><span class="p">,</span> <span class="n">endowment_insurance_min</span><span class="p">,</span> <span class="n">endowment_insurance_max</span><span class="p">)</span> \
+                          <span class="o">*</span> <span class="n">endowment_insurance_rate</span>
 
     <span class="c1"># 计算应扣公积金</span>
-    <span class="k">if</span> <span class="n">salary</span> <span class="o">&lt;</span> <span class="n">provident_min</span><span class="p">:</span>
-        <span class="n">provident</span> <span class="o">=</span> <span class="n">provident_min</span> <span class="o">*</span> <span class="n">provident_rate</span>
-    <span class="k">elif</span> <span class="n">salary</span> <span class="o">&gt;</span> <span class="n">provident_max</span><span class="p">:</span>
-        <span class="n">provident</span> <span class="o">=</span> <span class="n">provident_max</span> <span class="o">*</span> <span class="n">provident_rate</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">provident</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">*</span> <span class="n">provident_rate</span>
+    <span class="n">provident</span> <span class="o">=</span> <span class="n">limit_scope</span><span class="p">(</span><span class="n">salary</span><span class="p">,</span> <span class="n">provident_min</span><span class="p">,</span> <span class="n">provident_max</span><span class="p">)</span> <span class="o">*</span> <span class="n">provident_rate</span>
 
     <span class="c1"># 计算应扣的医保费用</span>
     <span class="n">hospital</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">*</span> <span class="n">hospital_rate</span>
@@ -11971,9 +11983,7 @@ div#notebook {
     <span class="n">lose_job</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">*</span> <span class="n">losejob_rate</span>
 
     <span class="c1"># 计算扣除三险一金后的剩余工资</span>
-    <span class="n">res_money</span> <span class="o">=</span> <span class="n">salary</span> <span class="o">-</span> <span class="n">endowment_insurance</span> <span class="o">-</span> <span class="n">provident</span> <span class="o">-</span> <span class="n">hospital</span> <span class="o">-</span> <span class="n">lose_job</span>
-
-    <span class="k">return</span> <span class="n">res_money</span>
+    <span class="k">return</span> <span class="n">salary</span> <span class="o">-</span> <span class="n">endowment_insurance</span> <span class="o">-</span> <span class="n">provident</span> <span class="o">-</span> <span class="n">hospital</span> <span class="o">-</span> <span class="n">lose_job</span>
 </pre></div>
 
 </div>
@@ -11983,47 +11993,37 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">tax_calculator</span><span class="p">(</span><span class="n">salary</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;返回用户应缴纳的个税&quot;&quot;&quot;</span>
 
     <span class="n">tax_free_point</span> <span class="o">=</span> <span class="mi">3500</span>
-    <span class="n">tax_level</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1500</span><span class="p">,</span><span class="mi">4500</span><span class="p">,</span><span class="mi">9000</span><span class="p">,</span><span class="mi">35000</span><span class="p">,</span><span class="mi">55000</span><span class="p">,</span><span class="mi">80000</span><span class="p">,</span><span class="mi">80001</span><span class="p">]</span>
-    <span class="n">tax_rate</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>
-    <span class="n">tax_deducted_amount</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">555</span><span class="p">,</span><span class="mi">1005</span><span class="p">,</span><span class="mi">2755</span><span class="p">,</span><span class="mi">5505</span><span class="p">,</span><span class="mi">13505</span><span class="p">]</span>
+    <span class="c1"># tax_level = [1500, 4500, 9000, 35000, 55000, 80000, 80001]</span>
+    <span class="c1"># tax_rate = [3, 10, 20, 25, 30, 35, 40]</span>
+    <span class="c1"># tax_deducted_amount = [0, 105, 555, 1005, 2755, 5505, 13505]</span>
+
+    <span class="n">tax_level</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">4500</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">105</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">9000</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">555</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">35000</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">1005</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">55000</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">2755</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">80000</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">5505</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">9e+99</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">13505</span><span class="p">)</span>
+    <span class="p">]</span>
 
     <span class="c1"># 计算用户缴纳三险一金后的应计税工资</span>
-    <span class="n">res_salary</span> <span class="o">=</span> <span class="n">salary_tax</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+    <span class="n">res_money</span> <span class="o">=</span> <span class="n">salary_tax</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">-</span> <span class="n">tax_free_point</span>
 
     <span class="c1"># 计算用户所在的缴税级别</span>
-    <span class="k">if</span> <span class="n">res_salary</span> <span class="o">&lt;=</span> <span class="n">tax_free_point</span><span class="p">:</span>
-        <span class="n">user_tax_level</span> <span class="o">=</span> <span class="mi">0</span>    <span class="c1"># 剩余工资在3500以内，缴税级别定义为0</span>
+    <span class="k">if</span> <span class="n">res_money</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">tax_money</span> <span class="o">=</span> <span class="n">res_salary</span> <span class="o">-</span> <span class="n">tax_free_point</span>
-
-        <span class="c1"># 剩余金额大于3500，查询对应的缴税级别</span>
-        <span class="k">if</span> <span class="n">tax_money</span> <span class="o">&gt;=</span> <span class="n">tax_level</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">user_tax_level</span> <span class="o">=</span> <span class="mi">7</span>    <span class="c1"># 剩余工资大于80000，缴税级别为7级</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">user_tax_level</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">tax_level</span><span class="p">[:</span><span class="mi">6</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">tax_money</span> <span class="o">&gt;</span> <span class="n">value</span><span class="p">:</span>
-                    <span class="n">user_tax_level</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="c1"># 计算用户应缴的税费</span>
-    <span class="k">if</span> <span class="n">user_tax_level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">tax</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">tax</span> <span class="o">=</span> <span class="n">tax_money</span> <span class="o">*</span> <span class="n">tax_rate</span><span class="p">[</span><span class="n">user_tax_level</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="o">-</span> <span class="n">tax_deducted_amount</span><span class="p">[</span><span class="n">user_tax_level</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        
-    <span class="c1"># 显示税前税后工资</span>
-    <span class="k">print</span> <span class="s2">&quot;税前工资为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="o">+</span> \
-          <span class="s2">&quot;，应扣税：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tax</span><span class="p">)</span> <span class="o">+</span> \
-          <span class="s2">&quot;, 税后工资为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res_salary</span> <span class="o">-</span> <span class="n">tax</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">tax</span>
+        <span class="k">for</span> <span class="n">boundary</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">deduction</span> <span class="ow">in</span> <span class="n">tax_level</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">res_money</span> <span class="o">&lt;</span> <span class="n">boundary</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">res_money</span> <span class="o">*</span> <span class="n">rate</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="o">-</span> <span class="n">deduction</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12033,26 +12033,43 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">float_equal</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;比较两个浮点数是否相同&quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">taxs</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">salary</span> <span class="ow">in</span> <span class="n">full_data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">user_salary</span> <span class="o">=</span> <span class="n">salary</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">user_salary</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">error_message</span> <span class="o">=</span> <span class="s2">&quot;工资出错啦！！！&quot;</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">staff</span> <span class="ow">in</span> <span class="n">full_data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;工资出错啦！！！&quot;</span>
+        <span class="n">taxs</span><span class="p">[</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">tax</span> <span class="o">=</span> <span class="n">tax_calculator</span><span class="p">(</span><span class="n">user_salary</span><span class="p">)</span>
+        <span class="n">tax</span> <span class="o">=</span> <span class="n">tax_calculator</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">])</span>
+        <span class="n">res_salary</span> <span class="o">=</span> <span class="n">salary_tax</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">tax</span>
+        <span class="k">print</span>  <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;税前工资为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;，税后工资为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res_salary</span><span class="p">)</span>
+        <span class="n">taxs</span><span class="p">[</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">tax</span>
 
-    <span class="n">taxs</span><span class="p">[</span><span class="n">salary</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">tax</span>
-    
-    <span class="c1"># 检查所得税预估值是否正确</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">tax</span> <span class="o">==</span> <span class="n">salary</span><span class="p">[</span><span class="s1">&#39;tax_maybe&#39;</span><span class="p">]):</span>
-        <span class="k">print</span> <span class="n">salary</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;的应扣税为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tax</span><span class="p">)</span> <span class="o">+</span> \
-              <span class="s2">&quot;, 与预估值一致，so cool！</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="n">salary</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;的应扣税为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tax</span><span class="p">)</span> <span class="o">+</span> \
-              <span class="s2">&quot;, 预估值出错啦！</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="c1"># 检查所得税预估值是否正确</span>
+        <span class="k">if</span> <span class="n">float_equal</span><span class="p">(</span><span class="n">tax</span><span class="p">,</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;tax_maybe&#39;</span><span class="p">]):</span>
+            <span class="k">print</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;的应扣税为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tax</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;, 与预估值一致，so cool！</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;的应扣税为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">tax</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;, 预估值出错啦！</span><span class="se">\n</span><span class="s2">&quot;</span>
+            
 </pre></div>
 
 </div>
@@ -12069,20 +12086,20 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>税前工资为：2500，应扣税：0, 税后工资为：1925.0
+<pre>wang税前工资为：2500，税后工资为：1925.0
 wang的应扣税为：0, 与预估值一致，so cool！
 
-税前工资为：7000，应扣税：84.0, 税后工资为：5306.0
+zhang税前工资为：7000，税后工资为：5306.0
 zhang的应扣税为：84.0, 预估值出错啦！
 
-税前工资为：8000，应扣税：161.0, 税后工资为：5999.0
+li税前工资为：8000，税后工资为：5999.0
 li的应扣税为：161.0, 预估值出错啦！
 
-税前工资为：9000，应扣税：238.0, 税后工资为：6692.0
+song税前工资为：9000，税后工资为：6692.0
 song的应扣税为：238.0, 预估值出错啦！
 
-税前工资为：50000，应扣税：9595.328, 税后工资为：35072.432
-tang的应扣税为：9595.328, 预估值出错啦！
+tang税前工资为：50000，税后工资为：35072.43
+tang的应扣税为：9595.33, 预估值出错啦！
 
 </pre>
 </div>
@@ -12103,11 +12120,22 @@ tang的应扣税为：9595.328, 预估值出错啦！
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">export</span><span class="p">()</span> <span class="p">:</span>
-    <span class="c1"># TODO 请导出正确的纳税额到export.csv, tax作为最后一列</span>
+    <span class="sd">&quot;&quot;&quot;导出正确的纳税额到export.csv, tax作为最后一列&quot;&quot;&quot;</span>
+    
+    <span class="n">in_file</span> <span class="o">=</span> <span class="s1">&#39;data.csv&#39;</span>
+    <span class="n">full_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+    <span class="n">out_file</span> <span class="o">=</span> <span class="s1">&#39;export.csv&#39;</span>
+
+    <span class="n">data_taxs</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">taxs</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="s1">&#39;tax_actual&#39;</span><span class="p">:</span> <span class="n">taxs</span><span class="o">.</span><span class="n">values</span><span class="p">()})</span>
+    <span class="n">full_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">full_data</span><span class="p">,</span> <span class="n">data_taxs</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="c1">#print full_data</span>
+    
+    
+    <span class="n">full_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
     <span class="k">print</span> <span class="s2">&quot;export done&quot;</span>
     
 <span class="n">export</span><span class="p">()</span>
@@ -12164,10 +12192,54 @@ tang的应扣税为：9595.328, 预估值出错啦！
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Unnamed: 0</th>
       <th>name</th>
+      <th>salary</th>
+      <th>tax_maybe</th>
+      <th>tax_actual</th>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>wang</td>
+      <td>2500</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>zhang</td>
+      <td>7000</td>
+      <td>105</td>
+      <td>84.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>li</td>
+      <td>8000</td>
+      <td>205</td>
+      <td>161.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>song</td>
+      <td>9000</td>
+      <td>405</td>
+      <td>238.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>tang</td>
+      <td>50000</td>
+      <td>800</td>
+      <td>9595.33</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -12181,7 +12253,7 @@ tang的应扣税为：9595.328, 预估值出错啦！
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">accuracy_score</span><span class="p">():</span>
@@ -12201,7 +12273,7 @@ tang的应扣税为：9595.328, 预估值出错啦！
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[64]:</div>
 
 
 
