@@ -11791,7 +11791,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 检查你的Python版本</span>
@@ -11807,7 +11807,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -11932,7 +11932,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">limit_scope</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">data_min</span><span class="p">,</span> <span class="n">data_max</span><span class="p">):</span>
@@ -11952,7 +11952,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[67]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">salary_tax</span><span class="p">(</span><span class="n">salary</span><span class="p">):</span>
@@ -11993,7 +11993,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">tax_calculator</span><span class="p">(</span><span class="n">salary</span><span class="p">):</span>
@@ -12033,7 +12033,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">float_equal</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
@@ -12050,10 +12050,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">taxs</span> <span class="o">=</span> <span class="p">{}</span>
+
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">staff</span> <span class="ow">in</span> <span class="n">full_data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">error_message</span> <span class="o">=</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;工资出错啦！！！&quot;</span>
@@ -12061,7 +12062,8 @@ div#notebook {
     <span class="k">else</span><span class="p">:</span>
         <span class="n">tax</span> <span class="o">=</span> <span class="n">tax_calculator</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">])</span>
         <span class="n">res_salary</span> <span class="o">=</span> <span class="n">salary_tax</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">tax</span>
-        <span class="k">print</span>  <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;税前工资为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;，税后工资为：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res_salary</span><span class="p">)</span>
+        <span class="k">print</span>  <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;税前工资：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;，税后工资：&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">res_salary</span><span class="p">)</span>
+        
         <span class="n">taxs</span><span class="p">[</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">tax</span>
 
         <span class="c1"># 检查所得税预估值是否正确</span>
@@ -12086,19 +12088,19 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>wang税前工资为：2500，税后工资为：1925.0
+<pre>wang税前工资：2500，税后工资：1925.0
 wang的应扣税为：0, 与预估值一致，so cool！
 
-zhang税前工资为：7000，税后工资为：5306.0
+zhang税前工资：7000，税后工资：5306.0
 zhang的应扣税为：84.0, 预估值出错啦！
 
-li税前工资为：8000，税后工资为：5999.0
+li税前工资：8000，税后工资：5999.0
 li的应扣税为：161.0, 预估值出错啦！
 
-song税前工资为：9000，税后工资为：6692.0
+song税前工资：9000，税后工资：6692.0
 song的应扣税为：238.0, 预估值出错啦！
 
-tang税前工资为：50000，税后工资为：35072.43
+tang税前工资：50000，税后工资：35072.43
 tang的应扣税为：9595.33, 预估值出错啦！
 
 </pre>
@@ -12120,7 +12122,7 @@ tang的应扣税为：9595.33, 预估值出错啦！
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">export</span><span class="p">()</span> <span class="p">:</span>
@@ -12135,7 +12137,7 @@ tang的应扣税为：9595.33, 预估值出错啦！
     <span class="c1">#print full_data</span>
     
     
-    <span class="n">full_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">full_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="k">print</span> <span class="s2">&quot;export done&quot;</span>
     
 <span class="n">export</span><span class="p">()</span>
@@ -12192,7 +12194,6 @@ tang的应扣税为：9595.33, 预估值出错啦！
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>name</th>
       <th>salary</th>
       <th>tax_maybe</th>
@@ -12202,7 +12203,6 @@ tang的应扣税为：9595.33, 预估值出错啦！
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>wang</td>
       <td>2500</td>
       <td>0</td>
@@ -12210,7 +12210,6 @@ tang的应扣税为：9595.33, 预估值出错啦！
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
       <td>zhang</td>
       <td>7000</td>
       <td>105</td>
@@ -12218,7 +12217,6 @@ tang的应扣税为：9595.33, 预估值出错啦！
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
       <td>li</td>
       <td>8000</td>
       <td>205</td>
@@ -12226,7 +12224,6 @@ tang的应扣税为：9595.33, 预估值出错啦！
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
       <td>song</td>
       <td>9000</td>
       <td>405</td>
@@ -12234,7 +12231,6 @@ tang的应扣税为：9595.33, 预估值出错啦！
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>tang</td>
       <td>50000</td>
       <td>800</td>
@@ -12253,13 +12249,26 @@ tang的应扣税为：9595.33, 预估值出错啦！
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">accuracy_score</span><span class="p">():</span>
-    <span class="c1"># TODO 计算正确率</span>
+    <span class="c1"># 计算正确率</span>
     <span class="n">socre</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="s2">&quot;accuracy of {:.2f}%.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">socre</span><span class="p">)</span>
+    <span class="n">right_times</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">wrong_times</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">full_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;export.csv&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">staff</span> <span class="ow">in</span> <span class="n">full_data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">float_equal</span><span class="p">(</span><span class="n">staff</span><span class="p">[</span><span class="s1">&#39;tax_maybe&#39;</span><span class="p">],</span> <span class="n">staff</span><span class="p">[</span><span class="s1">&#39;tax_actual&#39;</span><span class="p">]):</span>
+            <span class="n">right_times</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wrong_times</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+        <span class="n">socre</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">right_times</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">right_times</span> <span class="o">+</span> <span class="n">wrong_times</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="s2">&quot;accuracy of {:.2f}%.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">socre</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+    
 <span class="n">accuracy_score</span><span class="p">()</span>
 </pre></div>
 
@@ -12273,13 +12282,13 @@ tang的应扣税为：9595.33, 预估值出错啦！
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[64]:</div>
+<div class="prompt output_prompt">Out[27]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;accuracy of 0.00%.&#39;</pre>
+<pre>&#39;accuracy of 20.00%.&#39;</pre>
 </div>
 
 </div>
